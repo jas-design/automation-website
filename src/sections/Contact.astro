@@ -1,5 +1,8 @@
 ---
 import Logo from '../components/Logo.astro';
+
+const formspreeId = import.meta.env.PUBLIC_FORMSPREE_FORM_ID;
+const formAction = formspreeId ? `https://formspree.io/f/${formspreeId}` : undefined;
 ---
 
 <footer class="contact grid-surface" id="contact" data-header-theme="light">
@@ -9,16 +12,17 @@ import Logo from '../components/Logo.astro';
       <h2>Let’s make the work move.</h2>
       <p>Tell us where the process slows down. We’ll help you see what should be automated—and what should stay human.</p>
     </div>
-    <form class="contact-form reveal" data-contact-form novalidate>
+    <form class="contact-form reveal" action={formAction} method="POST" data-contact-form novalidate>
       <div class="form-row">
         <label>Name<input type="text" name="name" autocomplete="name" required placeholder="Your name" /></label>
         <label>Email<input type="email" name="email" autocomplete="email" required placeholder="you@company.com" /></label>
       </div>
       <label>Company<input type="text" name="company" autocomplete="organization" placeholder="Company name" /></label>
       <label>What should move faster?<textarea name="message" rows="5" required placeholder="A process, handoff, or repetitive task..."></textarea></label>
+      <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" hidden />
       <div class="contact-form__footer">
-        <button class="button button--primary" type="submit"><span>Let’s automate</span><span aria-hidden="true">↗</span></button>
-        <p class="form-status" aria-live="polite" data-form-status></p>
+        <button class="button button--primary" type="submit"><span data-submit-label>Send message</span><span aria-hidden="true">↗</span></button>
+        <p class="form-status" role="status" aria-live="polite" data-form-status></p>
       </div>
     </form>
   </div>

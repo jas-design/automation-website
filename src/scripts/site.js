@@ -67,12 +67,12 @@ if (carousel) {
   const count = controls.querySelector('[data-carousel-count]');
   const status = carousel.querySelector('[data-carousel-status]');
   const splide = new Splide(carousel, {
+    type: 'loop',
     autoWidth: true,
     gap: '18px',
     arrows: false,
     pagination: false,
     drag: true,
-    rewind: true,
     speed: 720,
     easing: 'cubic-bezier(.22, 1, .36, 1)',
     keyboard: 'focused',
@@ -97,17 +97,51 @@ if (carousel) {
 
 const form = document.querySelector('[data-contact-form]');
 const formStatus = document.querySelector('[data-form-status]');
-form?.addEventListener('submit', (event) => {
-  event.preventDefault();
-  const required = [...form.querySelectorAll('[required]')];
-  const invalid = required.filter((field) => !field.checkValidity());
-  required.forEach((field) => field.setAttribute('aria-invalid', String(!field.checkValidity())));
+const submitButton = form?.querySelector('[type="submit"]');
+const submitLabel = submitButton?.querySelector('[data-submit-label]');
+let buttonResetTimer;
 
-  if (invalid.length) {
-    formStatus.textContent = 'Complete the highlighted fields before continuing.';
-    invalid[0].focus();
-    return;
-  }
+if (form && formStatus && submitButton && submitLabel) {
+  form.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    const required = [...form.querySelectorAll('[required]')];
+    const invalid = required.filter((field) => !field.checkValidity());
+    required.forEach((field) => field.setAttribute('aria-invalid', String(!field.checkValidity())));
 
-  formStatus.textContent = 'Demo mode: your message is ready. Connect a CRM or email endpoint to send it.';
-});
+    if (invalid.length) {
+      formStatus.textContent = 'Complete the highlighted fields before continuing.';
+      invalid[0].focus();
+      return;
+    }
+
+    clearTimeout(buttonResetTimer);
+    submitButton.disabled = true;
+    submitLabel.textContent = 'Sending...';
+    form.setAttribute('aria-busy', 'true');
+    formStatus.textContent = 'Sending your message...';
+
+    try {
+      const response = await fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { Accept: 'application/json' }
+      });
+
+      if (!response.ok) throw new Error('Formspree rejected the submission.');
+
+      form.reset();
+      required.forEach((field) => field.setAttribute('aria-invalid', 'false'));
+      submitLabel.textContent = 'Message sent';
+      formStatus.textContent = "Message sent successfully. We'll get back to you soon.";
+      buttonResetTimer = setTimeout(() => {
+        submitLabel.textContent = 'Send message';
+      }, 2000);
+    } catch {
+      submitLabel.textContent = 'Send message';
+      formStatus.textContent = 'Something went wrong. Please try again.';
+    } finally {
+      submitButton.disabled = false;
+      form.removeAttribute('aria-busy');
+    }
+  });
+}
