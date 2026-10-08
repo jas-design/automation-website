@@ -1,0 +1,28 @@
+---
+import Button from '../components/Button.astro';
+---
+
+<section class="hero" id="top" data-header-theme="dark">
+  <div class="hero__ambient hero__ambient--left" aria-hidden="true"></div>
+  <div class="hero__ambient hero__ambient--right" aria-hidden="true"></div>
+  <div class="hero__inner shell">
+    <div class="hero__meta" aria-hidden="true">
+      <span>AI / AUTOMATION</span>
+      <span>OPERATIONS / 2026</span>
+    </div>
+    <div class="hero-triptych" aria-label="Connected automated systems in motion">
+      <div class="hero-frame"><img src="/assets/images/hero-triptych.webp" alt="Operations leader in a connected architectural system" width="2172" height="724" fetchpriority="high" /></div>
+      <div class="hero-frame"><img src="/assets/images/hero-triptych.webp" alt="Luminous routing channels connecting operational systems" width="2172" height="724" /></div>
+      <div class="hero-frame"><img src="/assets/images/hero-triptych.webp" alt="Automated data routes moving toward a shared destination" width="2172" height="724" /></div>
+      <svg class="hero-triptych__route" viewBox="0 0 1000 360" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M-40 320C120 150 220 20 390 90s250 230 650-20" />
+      </svg>
+    </div>
+    <div class="hero__copy reveal">
+      <p class="hero__kicker utility-label">Automation designed around the way your business actually works.</p>
+      <h1><span>SYSTEMS</span> THAT<br class="mobile-only" /> RUN THE WORK<span class="lime">.</span></h1>
+      <p class="hero__lede">We design AI agents and connected workflows that remove the handoffs slowing your team down.</p>
+      <Button href="#contact" label="Plan your automation" />
+    </div>
+  </div>
+</section>

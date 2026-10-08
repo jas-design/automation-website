@@ -1,0 +1,45 @@
+---
+import SectionHeading from '../components/SectionHeading.astro';
+
+const projects = [
+  { client: 'Halden Logistics', service: 'Operations orchestration', image: '/assets/images/case-logistics.webp', color: '#9cff1e' },
+  { client: 'Northstar Care', service: 'Customer support agent', image: '/assets/images/case-support.webp', color: '#f06c4f' },
+  { client: 'Vela Properties', service: 'Lead qualification', image: '/assets/images/case-sales.webp', color: '#d6ff8c' },
+  { client: 'Atlas Supply', service: 'Inventory coordination', image: '/assets/images/case-logistics.webp', color: '#c8ff63' },
+  { client: 'Ember Commerce', service: 'Conversation routing', image: '/assets/images/case-support.webp', color: '#ff8b70' },
+  { client: 'Fieldnote Finance', service: 'Document triage', image: '/assets/images/case-sales.webp', color: '#aeea52' }
+];
+---
+
+<section class="work" id="work" data-header-theme="light">
+  <div class="shell">
+    <SectionHeading eyebrow="Automation in practice" title="Built around the bottleneck." copy="Fictional project snapshots showing how a focused automation system can change the shape of everyday work." />
+  </div>
+  <div class="work-carousel">
+    <div class="splide" data-carousel aria-label="Automation project examples">
+      <p class="sr-only" aria-live="polite" data-carousel-status>Project 1 of 6: Halden Logistics</p>
+      <div class="splide__track">
+        <ul class="splide__list work-track">
+          {projects.map((project, index) => (
+            <li class="splide__slide project-card" data-project>
+              <div class="project-card__media" style={`--project-accent:${project.color}`}>
+                <img src={project.image} alt={`${project.service} concept for ${project.client}`} width="1086" height="1448" loading="lazy" />
+                <div class="project-card__signal" aria-hidden="true"></div>
+              </div>
+              <div class="project-card__meta">
+                <span class="utility-label">0{index + 1} / 06</span>
+                <h3>{project.client}</h3>
+                <p>{project.service}</p>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+    <div class="carousel-controls shell">
+      <button type="button" data-carousel-prev aria-label="Previous project">←</button>
+      <span data-carousel-count class="utility-label">01 / 06</span>
+      <button type="button" data-carousel-next aria-label="Next project">→</button>
+    </div>
+  </div>
+</section>

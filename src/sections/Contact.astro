@@ -1,0 +1,30 @@
+---
+import Logo from '../components/Logo.astro';
+---
+
+<footer class="contact grid-surface" id="contact" data-header-theme="light">
+  <div class="shell contact__main">
+    <div class="contact__heading reveal">
+      <p class="utility-label">Start with the bottleneck</p>
+      <h2>Let’s make the work move.</h2>
+      <p>Tell us where the process slows down. We’ll help you see what should be automated—and what should stay human.</p>
+    </div>
+    <form class="contact-form reveal" data-contact-form novalidate>
+      <div class="form-row">
+        <label>Name<input type="text" name="name" autocomplete="name" required placeholder="Your name" /></label>
+        <label>Email<input type="email" name="email" autocomplete="email" required placeholder="you@company.com" /></label>
+      </div>
+      <label>Company<input type="text" name="company" autocomplete="organization" placeholder="Company name" /></label>
+      <label>What should move faster?<textarea name="message" rows="5" required placeholder="A process, handoff, or repetitive task..."></textarea></label>
+      <div class="contact-form__footer">
+        <button class="button button--primary" type="submit"><span>Let’s automate</span><span aria-hidden="true">↗</span></button>
+        <p class="form-status" aria-live="polite" data-form-status></p>
+      </div>
+    </form>
+  </div>
+  <div class="shell contact__footer">
+    <div><Logo /><p>AI automation systems for work that needs to keep moving.</p></div>
+    <nav aria-label="Footer navigation"><a href="#about">About</a><a href="#services">Services</a><a href="#work">Work</a></nav>
+    <div class="contact__details"><a href="mailto:hello@nodal.studio">hello@nodal.studio</a><span>© 2026 NODAL Studio</span></div>
+  </div>
+</footer>

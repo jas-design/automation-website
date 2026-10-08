@@ -1,0 +1,25 @@
+---
+const steps = [
+  { number: '01', title: 'Map', text: 'We follow the work from trigger to outcome and find the handoffs worth changing.' },
+  { number: '02', title: 'Build', text: 'We connect the tools, design the agent behavior, and test every exception path.' },
+  { number: '03', title: 'Improve', text: 'We monitor real use, tune the system, and leave your team with clear documentation.' }
+];
+---
+
+<section class="process dark-section" data-header-theme="dark">
+  <div class="shell">
+    <div class="process__heading reveal">
+      <p class="utility-label">How engagement works</p>
+      <h2>From one stuck process<br />to a system that holds.</h2>
+    </div>
+    <ol class="process-list">
+      {steps.map((step, index) => (
+        <li class="process-step reveal" style={`--delay:${index * 100}ms`}>
+          <span class="process-step__number">{step.number}</span>
+          <div><h3>{step.title}</h3><p>{step.text}</p></div>
+          <span class="process-step__line" aria-hidden="true"></span>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>

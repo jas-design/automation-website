@@ -1,0 +1,25 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Hero from '../sections/Hero.astro';
+import About from '../sections/About.astro';
+import Services from '../sections/Services.astro';
+import Work from '../sections/Work.astro';
+import AIShowcase from '../sections/AIShowcase.astro';
+import Process from '../sections/Process.astro';
+import Contact from '../sections/Contact.astro';
+---
+
+<BaseLayout title="NODAL — AI systems that run the work" description="AI agents, workflow automation, and connected operations designed around the way your business works.">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <Header />
+  <main id="main">
+    <Hero />
+    <About />
+    <Services />
+    <Work />
+    <AIShowcase />
+    <Process />
+  </main>
+  <Contact />
+</BaseLayout>

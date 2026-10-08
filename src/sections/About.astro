@@ -1,0 +1,30 @@
+---
+const capabilities = [
+  ['AI Agents', 'n8n Workflows', 'Lead Routing', 'CRM Sync', 'Document Processing'],
+  ['Customer Support', 'API Integration', 'Sales Follow-up', 'Data Enrichment', 'Appointment Scheduling'],
+  ['Internal Operations', 'Knowledge Agents', 'Reporting Automation', 'Email Triage', 'Proposal Generation'],
+  ['Human Approval', 'Workflow Mapping', 'Process Monitoring', 'System Integration', 'Revenue Operations'],
+  ['HubSpot', 'Notion', 'Slack', 'OpenAI', 'Google Workspace', 'Custom APIs']
+];
+---
+
+<section class="about dark-section" id="about" data-header-theme="dark">
+  <div class="shell about__intro reveal">
+    <p class="utility-label">What we change</p>
+    <h2>Your team should make decisions.<br /><span>Your systems should move the work.</span></h2>
+    <p>We find the friction between your tools, people, and data—then build a dependable automation layer that keeps everything moving.</p>
+  </div>
+  <div class="capability-field" aria-label="Automation capabilities">
+    {capabilities.map((row, index) => (
+      <div class:list={['capability-row', { 'capability-row--reverse': index % 2 === 1 }]} style={`--duration:${72 + index * 7}s`}>
+        <div class="capability-track">
+          {[...row, ...row].map((item, itemIndex) => (
+            <span class:list={['capability-pill', { 'capability-pill--active': (itemIndex + index) % 3 === 0 }]} aria-hidden={itemIndex >= row.length ? 'true' : undefined}>
+              <span aria-hidden="true">+</span>{item}
+            </span>
+          ))}
+        </div>
+      </div>
+    ))}
+  </div>
+</section>

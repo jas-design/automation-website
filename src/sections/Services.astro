@@ -1,0 +1,35 @@
+---
+import SectionHeading from '../components/SectionHeading.astro';
+import ArrowIcon from '../components/ArrowIcon.astro';
+
+const services = [
+  { title: 'AI agents', copy: 'Digital teammates that research, qualify, draft, and route work with clear human checkpoints.', icon: 'agent' },
+  { title: 'Workflow automation', copy: 'Reliable n8n systems that connect the work already happening across your business.', icon: 'flow' },
+  { title: 'AI customer support', copy: 'Fast, grounded answers that know when to resolve, escalate, or ask for help.', icon: 'chat' },
+  { title: 'Connected operations', copy: 'CRM, email, calendars, documents, and custom APIs operating as one coordinated system.', icon: 'connect' }
+];
+---
+
+<section class="services grid-surface" id="services" data-header-theme="light">
+  <div class="shell">
+    <SectionHeading eyebrow="Services" title="Less busywork. More momentum." copy="Start with one stubborn process or connect the whole operation. Every build is mapped, tested, and made understandable to your team." />
+    <div class="service-grid">
+      {services.map((service, index) => (
+        <a class="service-card reveal" href="#contact" style={`--delay:${index * 70}ms`}>
+          <div class="service-card__copy">
+            <span class="utility-label">0{index + 1}</span>
+            <h3>{service.title}</h3>
+            <p>{service.copy}</p>
+          </div>
+          <svg class={`service-icon service-icon--${service.icon}`} viewBox="0 0 160 120" aria-hidden="true">
+            {service.icon === 'agent' && <><circle cx="80" cy="60" r="32"/><path d="M80 14v14M80 92v14M34 60H20M140 60h-14M47 27l10 11M113 27l-10 11M47 93l10-11M113 93l-10-11"/><circle cx="68" cy="55" r="4" class="fill"/><circle cx="92" cy="55" r="4" class="fill"/><path d="M65 72c8 7 22 7 30 0"/></>}
+            {service.icon === 'flow' && <><rect x="14" y="20" width="38" height="30" rx="7"/><rect x="108" y="70" width="38" height="30" rx="7"/><rect x="61" y="45" width="38" height="30" rx="7"/><path d="M52 35h18c6 0 10 4 10 10M99 60h18c6 0 10 4 10 10"/><circle cx="33" cy="35" r="4" class="fill"/><circle cx="80" cy="60" r="4" class="fill"/><circle cx="127" cy="85" r="4" class="fill"/></>}
+            {service.icon === 'chat' && <><path d="M22 27h79a12 12 0 0 1 12 12v35a12 12 0 0 1-12 12H59L37 103V86H22a12 12 0 0 1-12-12V39a12 12 0 0 1 12-12Z"/><path d="M113 47h24a12 12 0 0 1 12 12v27a12 12 0 0 1-12 12h-7v12l-17-12h-15"/><circle cx="41" cy="57" r="4" class="fill"/><circle cx="61" cy="57" r="4" class="fill"/><circle cx="81" cy="57" r="4" class="fill"/></>}
+            {service.icon === 'connect' && <><circle cx="80" cy="60" r="18"/><circle cx="30" cy="28" r="14"/><circle cx="130" cy="28" r="14"/><circle cx="30" cy="94" r="14"/><circle cx="130" cy="94" r="14"/><path d="m43 36 22 15M117 36 95 51M43 86l22-16M117 86 95 70"/><circle cx="80" cy="60" r="5" class="fill"/></>}
+          </svg>
+          <span class="service-card__arrow"><ArrowIcon /></span>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>
