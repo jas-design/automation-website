@@ -1,28 +1,77 @@
 ---
 const capabilities = [
-  ['AI Agents', 'n8n Workflows', 'Lead Routing', 'CRM Sync', 'Document Processing'],
-  ['Customer Support', 'API Integration', 'Sales Follow-up', 'Data Enrichment', 'Appointment Scheduling'],
-  ['Internal Operations', 'Knowledge Agents', 'Reporting Automation', 'Email Triage', 'Proposal Generation'],
-  ['Human Approval', 'Workflow Mapping', 'Process Monitoring', 'System Integration', 'Revenue Operations'],
-  ['HubSpot', 'Notion', 'Slack', 'OpenAI', 'Google Workspace', 'Custom APIs']
+  { name: 'Slow lead response', featured: true },
+  { name: 'Manual CRM updates', featured: true },
+  { name: 'Missed follow-ups', featured: true },
+  { name: 'Repetitive emails' },
+  { name: 'Data entry' },
+  { name: 'Manual reporting', featured: true },
+  { name: 'Disconnected tools' },
+  { name: 'Customer intake' },
+  { name: 'Appointment scheduling' },
+  { name: 'Customer support backlog', featured: true },
+  { name: 'Document processing', featured: true },
+  { name: 'Internal notifications' },
+
+  { name: 'Lead qualification', featured: true },
+  { name: 'Lead routing' },
+  { name: 'Sales follow-up' },
+  { name: 'Proposal generation', featured: true },
+  { name: 'Manual approvals' },
+  { name: 'Customer onboarding' },
+  { name: 'Email triage' },
+  { name: 'Inbox overload' },
+  { name: 'Calendar coordination' },
+  { name: 'Task creation' },
+
+  { name: 'Spreadsheet handoffs' },
+  { name: 'Duplicate data' },
+  { name: 'Pipeline updates' },
+  { name: 'Reporting preparation', featured: true },
+  { name: 'Data enrichment' },
+  { name: 'Quote generation' },
+  { name: 'Order updates' },
+  { name: 'Client reminders' },
+
+  { name: 'Knowledge search' },
+  { name: 'Support triage' },
+  { name: 'Human handoffs' },
+  { name: 'Contact routing' },
+  { name: 'Process monitoring' },
+  { name: 'Revenue operations', featured: true },
+  { name: 'Recurring admin work' },
+  { name: 'Manual status updates' }
 ];
+
+const capabilityRows = Array.from({ length: 5 }, (_, index) =>
+  capabilities.slice(index * 8, index * 8 + 8)
+);
 ---
 
 <section class="about dark-section" id="about" data-header-theme="dark">
   <div class="shell about__intro reveal">
-    <p class="utility-label">What we change</p>
+    <p class="utility-label">WHERE WORK GETS STUCK</p>
     <h2>Your team should make decisions.<br /><span>Your systems should move the work.</span></h2>
-    <p>We find the friction between your tools, people, and data—then build a dependable automation layer that keeps everything moving.</p>
+    <p>If your team is copying data, chasing follow-ups, updating systems manually, or moving information between apps, there is probably a better way to run the process.</p>
   </div>
   <div class="capability-field" aria-label="Automation capabilities">
-    {capabilities.map((row, index) => (
-      <div class:list={['capability-row', { 'capability-row--reverse': index % 2 === 1 }]} style={`--duration:${72 + index * 7}s`}>
+    {capabilityRows.map((row, index) => (
+      <div class:list={['capability-row', { 'capability-row--reverse': index % 2 === 1 }]} style={`--duration:${52 + index * 7}s`}>
         <div class="capability-track">
-          {[...row, ...row].map((item, itemIndex) => (
-            <span class:list={['capability-pill', { 'capability-pill--active': (itemIndex + index) % 3 === 0 }]} aria-hidden={itemIndex >= row.length ? 'true' : undefined}>
-              <span aria-hidden="true">+</span>{item}
-            </span>
-          ))}
+          <ul class="capability-set">
+            {row.map(({ name, featured }) => (
+              <li class:list={['capability-pill', { 'capability-pill--active': featured }]}>
+                <span aria-hidden="true">+</span>{name}
+              </li>
+            ))}
+          </ul>
+          <ul class="capability-set" aria-hidden="true">
+            {row.map(({ name, featured }) => (
+              <li class:list={['capability-pill', { 'capability-pill--active': featured }]}>
+                <span aria-hidden="true">+</span>{name}
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     ))}

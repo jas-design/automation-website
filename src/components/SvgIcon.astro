@@ -1,0 +1,54 @@
+---
+import arrowUpRight from '../assets/svg/arrow-up-right.svg?raw';
+import brandMark from '../assets/svg/brand-mark.svg?raw';
+import heroRoute from '../assets/svg/hero-route.svg?raw';
+import serviceAiAgent from '../assets/svg/service-ai-agent.svg?raw';
+import serviceAiOrchestration from '../assets/svg/service-ai-orchestration.svg?raw';
+import serviceConnectedOperations from '../assets/svg/service-connected-operations.svg?raw';
+import serviceLeadSales from '../assets/svg/service-lead-sales.svg?raw';
+import serviceSupport from '../assets/svg/service-support.svg?raw';
+import serviceWorkflow from '../assets/svg/service-workflow.svg?raw';
+import valueConnect from '../assets/svg/value-connect.svg?raw';
+import valueScale from '../assets/svg/value-scale.svg?raw';
+import valueTime from '../assets/svg/value-time.svg?raw';
+import workflowApproval from '../assets/svg/workflow-approval.svg?raw';
+import workflowCalendar from '../assets/svg/workflow-calendar.svg?raw';
+import workflowDocument from '../assets/svg/workflow-document.svg?raw';
+import workflowInbox from '../assets/svg/workflow-inbox.svg?raw';
+import workflowNotification from '../assets/svg/workflow-notification.svg?raw';
+
+const icons = {
+  'arrow-up-right': arrowUpRight,
+  'brand-mark': brandMark,
+  'hero-route': heroRoute,
+  'service-ai-agent': serviceAiAgent,
+  'service-ai-orchestration': serviceAiOrchestration,
+  'service-connected-operations': serviceConnectedOperations,
+  'service-lead-sales': serviceLeadSales,
+  'service-support': serviceSupport,
+  'service-workflow': serviceWorkflow,
+  'value-connect': valueConnect,
+  'value-scale': valueScale,
+  'value-time': valueTime,
+  'workflow-approval': workflowApproval,
+  'workflow-calendar': workflowCalendar,
+  'workflow-document': workflowDocument,
+  'workflow-inbox': workflowInbox,
+  'workflow-notification': workflowNotification
+} as const;
+
+export type SvgIconName = keyof typeof icons;
+
+interface Props {
+  name: SvgIconName;
+  class?: string;
+}
+
+const { name, class: className } = Astro.props;
+const safeClassName = className?.replace(/[^a-zA-Z0-9_: -]/g, '');
+const svg = safeClassName
+  ? icons[name].replace('<svg ', `<svg class="${safeClassName}" `)
+  : icons[name];
+---
+
+<Fragment set:html={svg} />

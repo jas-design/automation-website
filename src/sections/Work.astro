@@ -1,6 +1,4 @@
 ---
-import SectionHeading from '../components/SectionHeading.astro';
-
 const projects = [
   { client: 'Halden Logistics', service: 'Operations orchestration', image: '/assets/images/case-logistics.webp', color: '#9cff1e' },
   { client: 'Northstar Care', service: 'Customer support agent', image: '/assets/images/case-support.webp', color: '#f06c4f' },
@@ -13,7 +11,11 @@ const projects = [
 
 <section class="work" id="work" data-header-theme="light">
   <div class="shell">
-    <SectionHeading eyebrow="Automation in practice" title="Built around the bottleneck." copy="Fictional project snapshots showing how a focused automation system can change the shape of everyday work." />
+    <div class="section-heading">
+      <p class="utility-label">Automation in practice</p>
+      <h2>Built around the bottleneck.</h2>
+      <p class="section-heading__copy">Fictional project snapshots showing how a focused automation system can change the shape of everyday work.</p>
+    </div>
   </div>
   <div class="work-carousel">
     <div class="splide" data-carousel aria-label="Automation project examples">

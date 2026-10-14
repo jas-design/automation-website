@@ -1,5 +1,6 @@
 ---
 import Button from '../components/Button.astro';
+import SvgIcon from '../components/SvgIcon.astro';
 ---
 
 <section class="hero" id="top" data-header-theme="dark">
@@ -14,14 +15,14 @@ import Button from '../components/Button.astro';
       <div class="hero-frame"><img src="/assets/images/hero-triptych.webp" alt="Operations leader in a connected architectural system" width="2172" height="724" fetchpriority="high" /></div>
       <div class="hero-frame"><img src="/assets/images/hero-triptych.webp" alt="Luminous routing channels connecting operational systems" width="2172" height="724" /></div>
       <div class="hero-frame"><img src="/assets/images/hero-triptych.webp" alt="Automated data routes moving toward a shared destination" width="2172" height="724" /></div>
-      <svg class="hero-triptych__route" viewBox="0 0 1000 360" preserveAspectRatio="none" aria-hidden="true">
-        <path d="M-40 320C120 150 220 20 390 90s250 230 650-20" />
-      </svg>
+      <SvgIcon name="hero-route" class="hero-triptych__route" />
     </div>
     <div class="hero__copy reveal">
       <p class="hero__kicker utility-label">AI AUTOMATION FOR GROWING BUSINESSES</p>
       <h1><span>AUTOMATE</span> THE WORK. <br/>GROW THE <span class="lime">BUSINESS</span>.</h1>
-      <p class="hero__lede">We build practical automation systems that connect your tools, handle repetitive work and help your team respond faster.</p>
+      <p class="hero__lede">We build practical automation systems that connect your tools, handle repetitive work, and help your team respond faster.<br><br>
+
+From lead capture and CRM updates to follow-ups, customer support, and AI-powered workflows.</p>
       <Button href="#contact" label="Find what you can automate" />
     </div>
   </div>

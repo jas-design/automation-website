@@ -1,5 +1,5 @@
 ---
-import ArrowIcon from './ArrowIcon.astro';
+import SvgIcon from './SvgIcon.astro';
 
 interface Props {
   href: string;
@@ -12,5 +12,5 @@ const { href, label, variant = 'primary' } = Astro.props;
 
 <a class:list={['button', `button--${variant}`]} href={href}>
   <span>{label}</span>
-  <ArrowIcon />
+  <SvgIcon name="arrow-up-right" />
 </a>
