@@ -56,11 +56,11 @@ const additionalWorkflows = [
   { label: 'Document Processing', icon: 'workflow-document' },
   { label: 'Appointment Scheduling', icon: 'workflow-calendar' },
   { label: 'Proposal Generation', icon: 'workflow-document' },
-  { label: 'Data Enrichment', icon: 'service-ai-orchestration' },
+  { label: 'Data Enrichment', icon: 'value-connect' },
   { label: 'Email Triage', icon: 'workflow-inbox' },
   { label: 'Human Approvals', icon: 'workflow-approval' },
   { label: 'Internal Notifications', icon: 'workflow-notification' },
-  { label: 'Customer Intake', icon: 'service-lead-sales' }
+  { label: 'Customer Intake', icon: 'workflow-inbox' }
 ] as const;
 ---
 
@@ -85,9 +85,9 @@ const additionalWorkflows = [
         </ul>
       </header>
 
-      <div class="service-grid" aria-label="Core automation services">
+      <div class="service-grid" role="list" aria-label="Core automation services">
         {services.map((service, index) => (
-          <article class:list={['service-card', 'reveal', { 'service-card--featured': service.featured }]} style={`--delay:${index * 70}ms`}>
+          <article class:list={['service-card', 'reveal', { 'service-card--featured': service.featured }]} style={`--delay:${index * 70}ms`} role="listitem">
             <div class="service-card__topline">
               <span class="service-card__number">{service.number}</span>
               <span class="service-card__category">{service.category}</span>
